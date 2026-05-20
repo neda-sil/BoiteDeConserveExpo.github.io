@@ -1,8 +1,10 @@
 <div class="page">
+
+  <!-- GAUCHE : affichage du personnage survolé -->
   <div class="panel-gauche">
     <img class="perso-image" [src]="personnageActif.image" [alt]="personnageActif.nom">
     <div class="nametag">
-      <img src="/other/Nametag_vide.png" class="nametag-bg">
+      <img src="other/Nametag_vide.png" class="nametag-bg">
       <div class="nametag-texte">
         <p class="perso-nom">{{ personnageActif.nom }}</p>
         <p class="perso-desc">{{ personnageActif.description }}</p>
@@ -10,14 +12,20 @@
     </div>
   </div>
 
+  <!-- DROITE : grille + personnages par dessus -->
   <div class="panel-droit">
-    <img src="/other/GRILLE SELECTION.png" class="grille">
-    <div class="personnages-overlay">
-      @for (perso of personnages; track perso.id) {
-        <div class="carte" (mouseenter)="survoler(perso)">
-          <img [src]="perso.image" [alt]="perso.nom">
+    <img src="other/GRILLE SELECTION.png" class="grille">
+    <div class="grille-overlay">
+      @for (rangee of rangees; track $index) {
+        <div class="rangee" [style.margin-right]="($index) * 50 + 'px'">
+          @for (perso of rangee; track perso.id) {
+            <div class="carte" (mouseenter)="survoler(perso)">
+              <img [src]="perso.image" [alt]="perso.nom">
+            </div>
+          }
         </div>
       }
     </div>
   </div>
+
 </div>
