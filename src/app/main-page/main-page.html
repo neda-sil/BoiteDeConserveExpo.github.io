@@ -1,10 +1,23 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>BoiteDeConserveExpo</title>
-	</head>
-	<body>
-		<h1>Bonjour {{ prenom }} !</h1>
-		<button (click)="direBonjour()">Cliquer</button>
-	</body>
-</html>
+<div class="page">
+  <div class="panel-gauche">
+    <img class="perso-image" [src]="personnageActif.image" [alt]="personnageActif.nom">
+    <div class="nametag">
+      <img src="/other/Nametag_vide.png" class="nametag-bg">
+      <div class="nametag-texte">
+        <p class="perso-nom">{{ personnageActif.nom }}</p>
+        <p class="perso-desc">{{ personnageActif.description }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-droit">
+    <img src="/other/GRILLE SELECTION.png" class="grille">
+    <div class="personnages-overlay">
+      @for (perso of personnages; track perso.id) {
+        <div class="carte" (mouseenter)="survoler(perso)">
+          <img [src]="perso.image" [alt]="perso.nom">
+        </div>
+      }
+    </div>
+  </div>
+</div>
