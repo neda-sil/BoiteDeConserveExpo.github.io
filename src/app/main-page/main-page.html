@@ -19,7 +19,7 @@
       @for (rangee of rangees; track $index) {
         <div class="rangee" [style.margin-left]="(6 - $index) * 48 + 'px'">
           @for (perso of rangee; track perso.id) {
-            <div class="carte" (mouseenter)="survoler(perso)">
+            <div class="carte" (mouseenter)="survoler(perso)" (click)="cliquer(perso)" [class.locked]="personnageActif === perso && personnageLock">
               <img [src]="perso.image" [alt]="perso.nom">
             </div>
           }

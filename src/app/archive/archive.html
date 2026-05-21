@@ -12,12 +12,13 @@
     <div class="infos">
       <h1 class="nom">{{ personnage.nom }}</h1>
       @for (oeuvre of personnage.oeuvres; track $index) {
-        <div class="oeuvre">
+        <div class="oeuvre" >
           <h2 class="titre">{{ oeuvre.titre }}</h2>
           <p class="medium">{{ oeuvre.medium }}, {{ oeuvre.dimensions }}, {{ oeuvre.annee }}</p>
           <p class="description">{{ oeuvre.description }}</p>
         </div>
-      }
+	}
+	<button class="bouton_grille" [routerLink]="['/']">Retour à la grille</button>
     </div>
   </div>
 

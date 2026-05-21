@@ -66,8 +66,32 @@ personnages: Personnage[] = [
   ];
 
   personnageActif: Personnage = this.personnages[0];
+personnageLock: boolean = false;
 
-  survoler(perso: Personnage) {
+survoler(perso: Personnage) {
+  if (!this.personnageLock) {
     this.personnageActif = perso;
   }
+}
+
+cliquer(perso: Personnage) {
+  if (this.personnageActif === perso && this.personnageLock) {
+    this.personnageLock = false;
+  } else {
+    this.personnageActif = perso;
+    this.personnageLock = true;
+  }
+}
+
+ngOnInit() {
+  document.body.className = 'bg-base';
+}
+
+demarrerSequence() {
+  document.body.className = 'bg-gif';
+  setTimeout(() => {
+    document.body.className = 'bg-final';
+  }, 4000);
+}
+
 }

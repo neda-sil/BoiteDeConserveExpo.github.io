@@ -6,13 +6,14 @@
 /*   By: neda-sil <neda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 11:32:57 by neda-sil          #+#    #+#             */
-/*   Updated: 2026/05/21 11:43:16 by neda-sil         ###   ########.fr       */
+/*   Updated: 2026/05/21 14:24:53 by neda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 interface Oeuvre {
   titre: string;
@@ -31,12 +32,29 @@ interface Personnage {
 
 @Component({
   selector: 'app-archive',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './archive.html',
   styleUrl: './archive.css'
 })
 export class Archive implements OnInit {
 
+	 private bgTimeout: any;
+
+  ngOnInit() {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.personnage = this.personnages.find(p => p.id === id) ?? this.personnages[0];
+    
+    document.body.className = 'bg-gif';
+    this.bgTimeout = setTimeout(() => {
+      document.body.className = 'bg-final';
+    }, 4000);
+  }
+
+  ngOnDestroy() {
+    clearTimeout(this.bgTimeout);
+    document.body.className = 'bg-base';
+  }
+	
 	personnages: Personnage[] = [
     {
         id: 1,
@@ -481,9 +499,4 @@ export class Archive implements OnInit {
   personnage: Personnage = this.personnages[0];
 
   constructor(private route: ActivatedRoute) {}
-
-  ngOnInit() {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.personnage = this.personnages.find(p => p.id === id) ?? this.personnages[0];
-  }
 }

@@ -10,10 +10,28 @@ html, body {
   width: 100%;
 }
 
-body {
-  background-image: url('../public/other/FOND1.png');
+/* body {
+  background-image: url('../public/other/BG_BASE.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+} */
+
+body.bg-base {
+  background-image: url('../public/other/BG_BASE.png');
+  background-size: cover;
+  background-position: center;
+}
+
+body.bg-gif {
+  background-image: url('../public/other/BG_GIF.gif');
+  background-size: cover;
+  background-position: center;
+}
+
+body.bg-final {
+  background-image: url('../public/other/BG_FINAL.png');
+  background-size: cover;
+  background-position: center;
 }

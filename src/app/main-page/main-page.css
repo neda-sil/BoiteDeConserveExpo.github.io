@@ -41,7 +41,7 @@
 .panel-droit {
   width: 50%;
   height: 100vh;
-  right: 20%;
+  right: 22%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -88,6 +88,10 @@
   transform: skewX(-14deg);
   transition: filter 0.2s;
   flex-shrink: 0;
+}
+
+.carte.locked {
+  outline: 2px solid white;
 }
 
 .carte img {

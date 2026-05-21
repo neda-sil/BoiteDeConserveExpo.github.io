@@ -38,8 +38,27 @@
   object-fit: contain;
 }
 
-.infos{
+h1, p {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.panel-droit {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+.infos {
 	background-color: white;
+  padding: 20px;
+  max-width: 90%;
+}
+
+.oeuvre {
+  margin-bottom: 24px;
 }
 
 @media (max-width: 768px) {
@@ -81,4 +100,17 @@
     left: 0;
     width: 175%;
   }
+
+  .panel-gauche {
+    width: 100%;
+  }
+
+  .panel-droit {
+    width: 100%;
+    height: auto;
+    position: static;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
 }
