@@ -1,0 +1,24 @@
+<div class="page">
+
+  <div class="panel-gauche">
+    <div class="perso-wrapper">
+      <img class="perso-image" [src]="personnage.image" [alt]="personnage.nom">
+      <img class="nametag-img" [src]="'nametags/NAMETAG_CHARACTER_' + personnage.id + '.png'" [alt]="personnage.nom">
+	  <img class="ombre" src="other/OMBRE.png">
+    </div>
+  </div>
+
+  <div class="panel-droit">
+    <div class="infos">
+      <h1 class="nom">{{ personnage.nom }}</h1>
+      @for (oeuvre of personnage.oeuvres; track $index) {
+        <div class="oeuvre">
+          <h2 class="titre">{{ oeuvre.titre }}</h2>
+          <p class="medium">{{ oeuvre.medium }}, {{ oeuvre.dimensions }}, {{ oeuvre.annee }}</p>
+          <p class="description">{{ oeuvre.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+
+</div>
